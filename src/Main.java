@@ -13,7 +13,7 @@ public class Main {
     public static void initPerceptron() {
         List<Data> trainingData = DataReader.readData("iris_training.txt");
         perceptron = new Perceptron(trainingData);
-        perceptron.train();
+        perceptron.trainPerceptron();
     }
 
     public static void testPerceptron() {

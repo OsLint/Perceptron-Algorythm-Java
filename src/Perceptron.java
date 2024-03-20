@@ -14,27 +14,27 @@ public class Perceptron {
         weights[parametersSize - 1] = 0; //treshold
     }
 
-    public void train() {
+    public void trainPerceptron() {
         while (!isPerceptronTrainedForTrainingData(trainingData)) {
-            trainPerceptron();
+             trainingEpoch();
         }
     }
 
-    private void trainPerceptron() {
+    private void trainingEpoch() {
         for (Data data : trainingData) {
+            data.setPredictedTag(classifyVector(data.getAttributes()));
             if (!hasCorrectPrediction(data)) {
-                updateWeights(data);
+                adjustWeights(data);
             }
         }
     }
 
-    private void updateWeights(Data trainingData) {
+    private void adjustWeights(Data trainingData) {
         if (trainingData.getTag().trim().equals("Iris-setosa")) {
-            trainingData.setPredictedTag("Iris-setosa");
             for (int j = 0; j < weights.length; j++)
                 weights[j] += trainingData.getAttributes().get(j) * 0.5;
         } else {
-             trainingData.setPredictedTag("Iris-nie-setosa");
+
             for (int j = 0; j < weights.length; j++)
                 weights[j] -= trainingData.getAttributes().get(j) * 0.5;
         }

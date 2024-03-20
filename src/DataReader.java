@@ -28,8 +28,6 @@ class DataReader {
 
     public static Data parseLine(String input) {
         String[] elements = input.strip().split("\t");
-
-
         Double[] tempArr = new Double[elements.length - 1];
 
         for (int i = 0; i < elements.length - 1; i++) {
