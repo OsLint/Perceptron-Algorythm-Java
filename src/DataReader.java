@@ -17,8 +17,9 @@ class DataReader {
                 Data parsedLine = parseLine(line);
 
                 data.add(parsedLine);
-                System.out.println(parsedLine);
+            //    System.out.println(parsedLine);
             }
+            System.out.println("Wczytano dane z pliku: " + filePath);
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }

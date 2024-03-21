@@ -38,12 +38,12 @@ public class Main {
                 List<Double> attributes = new ArrayList<>();
 
 
-                for (int i = 0; i < tokens.length; i++) {
+                for (String token : tokens) {
                     try {
-                        double value = Double.parseDouble(tokens[i].replace(",", "."));
+                        double value = Double.parseDouble(token.replace(",", "."));
                         attributes.add(value);
                     } catch (NumberFormatException e) {
-                        System.err.println("Error parsing token at index " + i + ": " + tokens[i]);
+                        System.err.println(e.getMessage());
                     }
                 }
 
