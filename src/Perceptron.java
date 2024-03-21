@@ -4,6 +4,7 @@ import java.util.List;
 public class Perceptron {
     private final double[] weights;
     private final List<Data> trainingData;
+    private double alpha = 0.5;
 
 
     public Perceptron(List<Data> trainingData) {
@@ -32,11 +33,11 @@ public class Perceptron {
     private void adjustWeights(Data trainingData) {
         if (trainingData.getTag().trim().equals("Iris-setosa")) {
             for (int j = 0; j < weights.length; j++)
-                weights[j] += trainingData.getAttributes().get(j) * 0.5;
+                weights[j] += trainingData.getAttributes().get(j) * alpha;
         } else {
 
             for (int j = 0; j < weights.length; j++)
-                weights[j] -= trainingData.getAttributes().get(j) * 0.5;
+                weights[j] -= trainingData.getAttributes().get(j) * alpha;
         }
     }
 
@@ -62,7 +63,9 @@ public class Perceptron {
 
     public String classifyVector(List<Double> attributes) {
         double netValue = getNetValue(attributes);
-        return netValue >= 0 ? "Iris-setosa" : "Iris-nie-setosa";
+        double treshold = weights[weights.length - 1];
+       // System.out.println(treshold);
+        return netValue >= treshold ? "Iris-setosa" : "Iris-nie-setosa";
     }
 
     private double getNetValue(List<Double> attributes) {
